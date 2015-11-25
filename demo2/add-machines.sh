@@ -1,10 +1,6 @@
 #!/bin/bash
 
-function import_ssh_key() {
-  local IP_ADDRESS=$1
-
-  echo "${IP_ADDRESS} ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJqsrYP53KFxoLgHr1Ai+anVrcr3ggwJ7GKuXpcLY/i6QKmyM4gbWKAzngCS4PajvZVaBv3TWPBCXjb48GhjHQ8=" >> ~/.ssh/known_hosts
-}
+source ../common/common-functions.sh
 
 # set-up two more nodes
 NODE1_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh /usr/sbin/sshd -D | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
