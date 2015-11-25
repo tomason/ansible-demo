@@ -1,0 +1,13 @@
+---
+- name: List running processes
+  shell: ps ufx | grep "java -D\[Process Controller\]" | awk '{print $2}'
+  register: pid
+
+- name: Stop the server
+  shell: kill -s TERM {{ pid.stdout }}
+  when: pid.stdout != "" and node_restart|default(false)
+
+- name: Start the server in domain mode
+  shell: nohup /opt/wildfly-9.0.1.Final/bin/domain.sh &
+  when: pid.stdout == "" or node_restart|default(false)
+

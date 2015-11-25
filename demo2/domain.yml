@@ -1,0 +1,26 @@
+---
+- hosts: all
+  remote_user: root
+  roles:
+    - install-wildfly
+
+- hosts: master
+  remote_user: root
+  vars:
+    template_file: host-master-xml.j2
+  roles:
+    - create-host-xml
+    - add-users
+
+- hosts: nodes
+  remote_user: root
+  vars:
+    template_file: host-node-xml.j2
+  roles:
+    - create-host-xml
+
+- hosts: all
+  remote_user: root
+  roles:
+    - restart-wildfly
+

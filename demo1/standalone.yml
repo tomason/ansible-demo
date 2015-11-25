@@ -1,0 +1,21 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: Install java through dnf
+      dnf: name=java-1.8.0-openjdk-devel state=present
+      when: ansible_pkg_mgr == 'dnf'
+
+    - name: Install java through yum
+      yum: name=java-1.8.0-openjdk-devel state=present
+      when: ansible_pkg_mgr == 'yum'
+
+    - name: Download Wildfly
+      get_url: url=http://webserver/wildfly9.zip dest=/tmp/wildfly9.zip
+
+    - name: Unzip Wildfly
+      unarchive: src=/tmp/wildfly9.zip dest=/opt copy=no
+
+    - name: Start Wildfly in standalone mode
+      shell: nohup /opt/wildfly-9.0.1.Final/bin/standalone.sh -b 0.0.0.0 &
+
