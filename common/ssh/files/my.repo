@@ -1,0 +1,6 @@
+[cache]
+name=Demo chache
+baseurl=http://webserver/fedora
+enabled=1
+gpgcheck=0
+
