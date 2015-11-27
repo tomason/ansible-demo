@@ -8,6 +8,6 @@
   when: pid.stdout != "" and node_restart|default(false)
 
 - name: Start the server in domain mode
-  shell: nohup /opt/wildfly-9.0.1.Final/bin/domain.sh &
+  shell: nohup /opt/wildfly-9.0.2.Final/bin/domain.sh &
   when: pid.stdout == "" or node_restart|default(false)
 

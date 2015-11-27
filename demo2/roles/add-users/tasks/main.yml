@@ -1,17 +1,17 @@
 ---
 - name: Create management user for master
-  shell: /opt/wildfly-9.0.1.Final/bin/add-user.sh -u "{{ node_username }}" -p "{{ node_password }}"
+  shell: /opt/wildfly-9.0.2.Final/bin/add-user.sh -u "{{ node_username }}" -p "{{ node_password }}"
   when: node_username is defined and node_password is defined
 
 - name: List users in management roles
-  shell: cat /opt/wildfly-9.0.1.Final/domain/configuration/mgmt-users.properties | sed -n 's/^\([^#][^=]*\)=.*/\1/ p'
+  shell: cat /opt/wildfly-9.0.2.Final/domain/configuration/mgmt-users.properties | sed -n 's/^\([^#][^=]*\)=.*/\1/ p'
   register: users
 
 - name: Print the users
   debug: var=users
 
 - name: Create user for nodes
-  shell: /opt/wildfly-9.0.1.Final/bin/add-user.sh -u "{{ hostvars[item]['node_username'] }}" -p "{{ hostvars[item]['node_password'] }}"
+  shell: /opt/wildfly-9.0.2.Final/bin/add-user.sh -u "{{ hostvars[item]['node_username'] }}" -p "{{ hostvars[item]['node_password'] }}"
   when: hostvars[item]['node_username'] not in users.stdout_lines
   with_items: groups.nodes
 

@@ -1,6 +1,6 @@
 ---
 - name: Copy the host.xml template
-  template: src={{ template_file }} dest=/opt/wildfly-9.0.1.Final/domain/configuration/host.xml
+  template: src={{ template_file }} dest=/opt/wildfly-9.0.2.Final/domain/configuration/host.xml
   register: result
 
 - name: Mark node with changed configuration

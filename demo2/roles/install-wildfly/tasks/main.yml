@@ -11,6 +11,6 @@
   get_url: url=http://webserver/wildfly9.zip dest=/tmp/wildfly9.zip
 
 - name: Unzip Wildfly
-  unarchive: src=/tmp/wildfly9.zip dest=/opt copy=no creates=/opt/wildfly-9.0.1.Final
+  unarchive: src=/tmp/wildfly9.zip dest=/opt copy=no creates=/opt/wildfly-9.0.2.Final
 
 

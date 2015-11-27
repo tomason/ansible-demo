@@ -11,11 +11,13 @@
       when: ansible_pkg_mgr == 'yum'
 
     - name: Download Wildfly
-      get_url: url=http://webserver/wildfly9.zip dest=/tmp/wildfly9.zip
+      get_url: url=http://webserver/wildfly9.zip
+               dest=/tmp/wildfly9.zip
 
     - name: Unzip Wildfly
       unarchive: src=/tmp/wildfly9.zip dest=/opt copy=no
+                 creates=/opt/wildfly-9.0.2.Final
 
     - name: Start Wildfly in standalone mode
-      shell: nohup /opt/wildfly-9.0.1.Final/bin/standalone.sh -b 0.0.0.0 &
+      shell: nohup /opt/wildfly-9.0.2.Final/bin/standalone.sh -b 0.0.0.0 &
 
