@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:23
 MAINTAINER tschloss@redhat.com
 
 # install everything necessary
