@@ -9,11 +9,11 @@ echo "Setting-up demo2 for ansible JBUG"
 deploy_resource_server
 
 # set-up master
-MASTER_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
+MASTER_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:fedora | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
 
 # set-up two nodes
-NODE1_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
-NODE2_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
+NODE1_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:fedora | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
+NODE2_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:centos | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
 
 HOSTS_FILE=hosts
 cat > $HOSTS_FILE <<EOF
@@ -27,6 +27,6 @@ EOF
 
 import_ssh_key $MASTER_ADDRESS
 import_ssh_key $NODE1_ADDRESS
-import_ssh_key $NODE2_ADDRESS
+#import_ssh_key $NODE2_ADDRESS
 
 echo "Master is running on $MASTER_ADDRESS, nodes on $NODE1_ADDRESS and $NODE2_ADDRESS and host file has been created in $HOSTS_FILE"

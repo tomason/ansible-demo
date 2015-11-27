@@ -1,0 +1,6 @@
+[cache]
+name=Demo chache
+baseurl=http://webserver/centos
+enabled=1
+gpgcheck=0
+

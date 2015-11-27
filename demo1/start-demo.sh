@@ -9,7 +9,7 @@ echo "Setting-up demo for ansible JBUG"
 deploy_resource_server
 
 # set-up one node to practice on
-ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh2 /usr/sbin/sshd -D | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
+ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:fedora /usr/sbin/sshd -D | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
 
 HOSTS_FILE=hosts
 cat > $HOSTS_FILE <<EOF
