@@ -2,7 +2,7 @@ FROM fedora:23
 MAINTAINER tschloss@redhat.com
 
 # install everything necessary
-RUN dnf install -y openssh-server procps-ng vim bind-utils unzip && \
+RUN dnf install -y openssh-server procps-ng vim bind-utils unzip python python-simplejson python-dnf && \
     dnf clean all && \
     rm /etc/yum.repos.d/*
 
