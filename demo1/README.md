@@ -7,7 +7,7 @@ You should use root user to connect to the server and can try some of the follow
 You need one machine with SSH installed with a user account you can login to via ssh. You should have Python 2.4 or higher installed on the machine.
 
 If you don't have access to such a machine, you can use provided `start-demo.sh` script that will create a docker container with Fedora 23 for you
-that has everything set up and prepared. If you want to use this option, please, follow the README.md in the root of the repository on how to set up
+that has everything set up and prepared. If you want to use this option, please, follow the [readme in the root of the repository](https://github.com/tomason/ansible-demo/blob/master/README.md) on how to set up
 your own environment (build docker images, set up HTTP server etc.).
 
 ## Ansible ad-hoc commands
@@ -17,8 +17,7 @@ All commands in this document follow the same structure:
 `ansible <host-pattern> [options] -m <module> [-a <arguments>]`
 
 You can find a list of modules (for `-m` parameter) together with their required arguments
-(for `-a` parameter) in Ansible documentation:
-http://docs.ansible.com/ansible/modules_by_category.html
+(for `-a` parameter) in [Ansible documentation](http://docs.ansible.com/ansible/modules_by_category.html).
 
 Most notable options are
 ```
