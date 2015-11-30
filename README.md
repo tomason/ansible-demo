@@ -4,7 +4,7 @@ Demo for presentation on JBUGcz. The purpose of the demo is to show basics of An
 ## Requirements
 To run these demos, you need multiple machines with ssh access and internet access for downloading files and installing packages. If you don't have access to any machines, you can use script `setup-environment.sh` for Docker based setup.
 
-## Ofline demo
+## Offline demo
 If you need to run the demo in offline environment, run `setup-environment.sh` script. It will setup local Docker based setup and download any files and packages that are necessary for other demos.
 
 ## Setup Script
