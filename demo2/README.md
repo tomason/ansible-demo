@@ -96,7 +96,7 @@ If you wan to have the same user for all nodes or set number of servers globally
 172.17.0.28  node_name=supernode  node_servers=2
 
 [nodes:vars]
-node_servers: 1
-node_username: node-user
-node_password: nodePassw0rd;
+node_servers=1
+node_username=node-user
+node_password=nodePassw0rd;
 ```
