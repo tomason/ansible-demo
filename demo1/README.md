@@ -48,7 +48,7 @@ Unzip the file on all machines:
 
 Execute shell command on all machines in inventory (shell module is the default):
 
-`ansible all -i hosts -u root -a 'nohup /opt/wildfly-9.0.2.Final/bin/standalone.sh -b 0.0.0.0 &'`
+`ansible all -i hosts -u root -m shell -a 'nohup /opt/wildfly-9.0.2.Final/bin/standalone.sh -b 0.0.0.0 &'`
 
 
 ## Basic playbooks
