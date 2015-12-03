@@ -9,11 +9,11 @@ echo "Setting-up demo2 for ansible JBUG"
 deploy_resource_server
 
 # set-up master
-MASTER_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:fedora | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
+MASTER_ADDRESS=$(deploy_machine "tschloss/ssh:fedora" "--link webserver:webserver")
 
 # set-up two nodes
-NODE1_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:fedora | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
-NODE2_ADDRESS=$(docker run -d --link webserver:webserver tschloss/ssh:centos | xargs docker inspect | grep IPAddress | sed -rn 's/.*"([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)".*/\1/p')
+NODE1_ADDRESS=$(deploy_machine "tschloss/ssh:fedora" "--link webserver:webserver")
+NODE2_ADDRESS=$(deploy_machine "tschloss/ssh:centos" "--link webserver:webserver")
 
 HOSTS_FILE=hosts
 cat > $HOSTS_FILE <<EOF
